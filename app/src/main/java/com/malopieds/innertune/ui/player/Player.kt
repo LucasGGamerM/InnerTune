@@ -127,6 +127,7 @@ import com.malopieds.innertune.utils.rememberPreference
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import me.saket.squiggles.SquigglySlider
 import java.time.LocalDateTime
@@ -156,7 +157,8 @@ fun BottomSheetPlayer(
     val canSkipPrevious by playerConnection.canSkipPrevious.collectAsState()
     val canSkipNext by playerConnection.canSkipNext.collectAsState()
 
-    var showLyrics by rememberPreference(ShowLyricsKey, defaultValue = false)
+    val shuffleModeEnabled by playerConnection.shuffleModeEnabled.collectAsState()
+
     val playerBackground by rememberEnumPreference(key = PlayerBackgroundStyleKey, defaultValue = PlayerBackgroundStyle.DEFAULT)
 
     val enableSquigglySlider by rememberPreference(EnableSquigglySlider, defaultValue = true)
@@ -855,11 +857,11 @@ fun BottomSheetPlayer(
                             else -> throw IllegalStateException()
                         },
                         modifier =
-                        Modifier
-                            .size(42.dp)
-                            .padding(4.dp)
-                            .align(Alignment.CenterEnd)
-                            .alpha(if (repeatMode == Player.REPEAT_MODE_OFF) 0.5f else 1f),
+                            Modifier
+                                .size(42.dp)
+                                .padding(4.dp)
+                                .align(Alignment.Center)
+                                .alpha(if (repeatMode == Player.REPEAT_MODE_OFF) 0.5f else 1f),
                         onClick = playerConnection.player::toggleRepeatMode,
                     )
                 }
@@ -932,16 +934,15 @@ fun BottomSheetPlayer(
                 }
 
                 Box(modifier = Modifier.weight(1f)) {
-                    IconButton(onClick = { showLyrics = !showLyrics }) {
-                        Image(
-                            painter = painterResource(R.drawable.lyrics),
-                            contentDescription = null,
-                            colorFilter = ColorFilter.tint(onBackgroundColor),
-                            modifier =
-                                Modifier
-                                    .alpha(if (showLyrics) 1f else 0.5f),
-                        )
-                    }
+                    ResizableIconButton(
+                        icon = R.drawable.shuffle,
+                        modifier =
+                            Modifier
+                                .size(32.dp)
+                                .align(Alignment.Center)
+                                .alpha(if (shuffleModeEnabled) 1f else 0.5f),
+                        onClick = {playerConnection.player.shuffleModeEnabled = !playerConnection.player.shuffleModeEnabled}
+                    )
                 }
             }
         }

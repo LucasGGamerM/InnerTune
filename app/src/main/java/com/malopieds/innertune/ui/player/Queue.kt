@@ -499,8 +499,6 @@ fun Queue(
             }
         }
 
-        val shuffleModeEnabled by playerConnection.shuffleModeEnabled.collectAsState()
-
         Box(
             modifier =
                 Modifier
@@ -519,46 +517,10 @@ fun Queue(
                             .only(WindowInsetsSides.Bottom + WindowInsetsSides.Horizontal),
                     ).padding(12.dp),
         ) {
-            IconButton(
-                modifier = Modifier.align(Alignment.CenterStart),
-                onClick = {
-                    coroutineScope
-                        .launch {
-                            reorderableState.listState.animateScrollToItem(
-                                if (playerConnection.player.shuffleModeEnabled) playerConnection.player.currentMediaItemIndex else 0,
-                            )
-                        }.invokeOnCompletion {
-                            playerConnection.player.shuffleModeEnabled = !playerConnection.player.shuffleModeEnabled
-                        }
-                },
-            ) {
-                Icon(
-                    painter = painterResource(R.drawable.shuffle),
-                    contentDescription = null,
-                    modifier = Modifier.alpha(if (shuffleModeEnabled) 1f else 0.5f),
-                )
-            }
-
             Icon(
                 painter = painterResource(R.drawable.expand_more),
                 contentDescription = null,
                 modifier = Modifier.align(Alignment.Center),
-            )
-
-            ResizableIconButton(
-                icon =
-                    when (repeatMode) {
-                        Player.REPEAT_MODE_OFF, Player.REPEAT_MODE_ALL -> R.drawable.repeat
-                        Player.REPEAT_MODE_ONE -> R.drawable.repeat_one
-                        else -> throw IllegalStateException()
-                    },
-                modifier =
-                    Modifier
-                        .size(32.dp)
-                        .padding(4.dp)
-                        .align(Alignment.CenterEnd)
-                        .alpha(if (repeatMode == Player.REPEAT_MODE_OFF) 0.5f else 1f),
-                onClick = playerConnection.player::toggleRepeatMode,
             )
         }
     }

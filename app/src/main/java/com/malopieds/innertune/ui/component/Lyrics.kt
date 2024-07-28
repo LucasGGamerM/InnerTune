@@ -31,6 +31,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.AbsoluteAlignment
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -53,6 +54,7 @@ import com.malopieds.innertune.R
 import com.malopieds.innertune.constants.LyricsTextPositionKey
 import com.malopieds.innertune.constants.PlayerBackgroundStyle
 import com.malopieds.innertune.constants.PlayerBackgroundStyleKey
+import com.malopieds.innertune.constants.ShowLyricsKey
 import com.malopieds.innertune.constants.TranslateLyricsKey
 import com.malopieds.innertune.db.entities.LyricsEntity.Companion.LYRICS_NOT_FOUND
 import com.malopieds.innertune.lyrics.LyricsEntry
@@ -82,6 +84,7 @@ fun Lyrics(
 
     val lyricsTextPosition by rememberEnumPreference(LyricsTextPositionKey, LyricsPosition.CENTER)
     var translationEnabled by rememberPreference(TranslateLyricsKey, false)
+    var showLyrics by rememberPreference(ShowLyricsKey, defaultValue = false)
 
     val mediaMetadata by playerConnection.mediaMetadata.collectAsState()
     val translating by playerConnection.translating.collectAsState()
@@ -196,6 +199,11 @@ fun Lyrics(
     ) {
         LazyColumn(
             state = lazyListState,
+            horizontalAlignment = when (lyricsTextPosition) {
+                LyricsPosition.LEFT -> AbsoluteAlignment.Left
+                LyricsPosition.CENTER -> Alignment.CenterHorizontally
+                LyricsPosition.RIGHT -> AbsoluteAlignment.Right
+            },
             contentPadding =
                 WindowInsets.systemBars
                     .only(WindowInsetsSides.Top)
@@ -203,6 +211,10 @@ fun Lyrics(
                     .asPaddingValues(),
             modifier =
                 Modifier
+                    .clickable(
+                        enabled = true,
+                        onClick = {showLyrics = !showLyrics},
+                    )
                     .fadingEdge(vertical = 64.dp)
                     .nestedScroll(
                         remember {
@@ -267,16 +279,9 @@ fun Lyrics(
 //                                MaterialTheme.colorScheme.secondary
                                 outLines
                             },
-                        textAlign =
-                            when (lyricsTextPosition) {
-                                LyricsPosition.LEFT -> TextAlign.Left
-                                LyricsPosition.CENTER -> TextAlign.Center
-                                LyricsPosition.RIGHT -> TextAlign.Right
-                            },
                         fontWeight = FontWeight.Bold,
                         modifier =
                             Modifier
-                                .fillMaxWidth()
                                 .clickable(enabled = isSynced) {
                                     playerConnection.player.seekTo(item.time)
                                     lastPreviewTime = 0L

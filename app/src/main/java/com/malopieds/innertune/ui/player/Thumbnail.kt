@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -40,7 +41,7 @@ fun Thumbnail(
     val mediaMetadata by playerConnection.mediaMetadata.collectAsState()
     val error by playerConnection.error.collectAsState()
 
-    val showLyrics by rememberPreference(ShowLyricsKey, false)
+    var showLyrics by rememberPreference(ShowLyricsKey, defaultValue = false)
 
     DisposableEffect(showLyrics) {
         currentView.keepScreenOn = showLyrics
@@ -75,6 +76,7 @@ fun Thumbnail(
                             .clip(RoundedCornerShape(ThumbnailCornerRadius * 2))
                             .pointerInput(Unit) {
                                 detectTapGestures(
+                                    onTap = { showLyrics = !showLyrics },
                                     onDoubleTap = { offset ->
                                         if (offset.x < size.width / 2) {
                                             playerConnection.player.seekBack()
