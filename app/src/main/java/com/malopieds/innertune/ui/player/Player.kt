@@ -678,7 +678,7 @@ fun BottomSheetPlayer(
                             Text(
                                 text = makeTimeString(sleepTimerTimeLeft),
                                 style = MaterialTheme.typography.labelLarge,
-                                color = onBackgroundColor,
+                                color = MaterialTheme.colorScheme.onPrimary,
                                 modifier =
                                     Modifier
                                         .clip(RoundedCornerShape(50))
