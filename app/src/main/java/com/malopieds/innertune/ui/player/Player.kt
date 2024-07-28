@@ -83,6 +83,7 @@ import androidx.compose.ui.window.DialogProperties
 import androidx.core.graphics.ColorUtils
 import androidx.core.net.toUri
 import androidx.media3.common.C
+import androidx.media3.common.Player
 import androidx.media3.common.Player.STATE_ENDED
 import androidx.media3.common.Player.STATE_READY
 import androidx.media3.exoplayer.offline.Download
@@ -106,6 +107,7 @@ import com.malopieds.innertune.constants.ShowLyricsKey
 import com.malopieds.innertune.constants.ThumbnailCornerRadius
 import com.malopieds.innertune.db.entities.PlaylistSongMap
 import com.malopieds.innertune.extensions.togglePlayPause
+import com.malopieds.innertune.extensions.toggleRepeatMode
 import com.malopieds.innertune.models.MediaMetadata
 import com.malopieds.innertune.playback.ExoDownloadService
 import com.malopieds.innertune.ui.component.BottomSheet
@@ -147,6 +149,7 @@ fun BottomSheetPlayer(
 
     val playbackState by playerConnection.playbackState.collectAsState()
     val isPlaying by playerConnection.isPlaying.collectAsState()
+    val repeatMode by playerConnection.repeatMode.collectAsState()
     val mediaMetadata by playerConnection.mediaMetadata.collectAsState()
     val currentSong by playerConnection.currentSong.collectAsState(initial = null)
 
@@ -651,6 +654,36 @@ fun BottomSheetPlayer(
                 Spacer(modifier = Modifier.size(12.dp))
 
                 Box(
+                    modifier =
+                    Modifier
+                        .size(42.dp)
+                        .clip(RoundedCornerShape(24.dp))
+                        .background(MaterialTheme.colorScheme.primary)
+                        .clickable {
+                            playerConnection.toggleLike()
+                        },
+                ) {
+                    Image(
+                        painter =
+                        painterResource(
+                            if (currentSong?.song?.liked == true) {
+                                R.drawable.favorite
+                            } else {
+                                R.drawable.favorite_border
+                            },
+                        ),
+                        contentDescription = null,
+                        colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onPrimary),
+                        modifier =
+                        Modifier
+                            .align(Alignment.Center)
+                            .size(24.dp),
+                    )
+                }
+
+                Spacer(modifier = Modifier.size(12.dp))
+
+                Box(
                     contentAlignment = Alignment.Center,
                     modifier =
                         Modifier
@@ -815,14 +848,19 @@ fun BottomSheetPlayer(
             ) {
                 Box(modifier = Modifier.weight(1f)) {
                     ResizableIconButton(
-                        icon = if (currentSong?.song?.liked == true) R.drawable.favorite else R.drawable.favorite_border,
-                        color = if (currentSong?.song?.liked == true) MaterialTheme.colorScheme.error else onBackgroundColor,
+                        icon =
+                        when (repeatMode) {
+                            Player.REPEAT_MODE_OFF, Player.REPEAT_MODE_ALL -> R.drawable.repeat
+                            Player.REPEAT_MODE_ONE -> R.drawable.repeat_one
+                            else -> throw IllegalStateException()
+                        },
                         modifier =
-                            Modifier
-                                .size(32.dp)
-                                .padding(4.dp)
-                                .align(Alignment.Center),
-                        onClick = playerConnection::toggleLike,
+                        Modifier
+                            .size(42.dp)
+                            .padding(4.dp)
+                            .align(Alignment.CenterEnd)
+                            .alpha(if (repeatMode == Player.REPEAT_MODE_OFF) 0.5f else 1f),
+                        onClick = playerConnection.player::toggleRepeatMode,
                     )
                 }
 
