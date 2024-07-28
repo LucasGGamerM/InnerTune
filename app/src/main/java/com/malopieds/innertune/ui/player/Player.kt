@@ -651,29 +651,6 @@ fun BottomSheetPlayer(
                 Spacer(modifier = Modifier.size(12.dp))
 
                 Box(
-                    modifier =
-                        Modifier
-                            .size(42.dp)
-                            .clip(RoundedCornerShape(24.dp))
-                            .background(MaterialTheme.colorScheme.primary)
-                            .clickable {
-                                showChoosePlaylistDialog = true
-                            },
-                ) {
-                    Image(
-                        painter = painterResource(R.drawable.playlist_add),
-                        contentDescription = null,
-                        colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onPrimary),
-                        modifier =
-                            Modifier
-                                .align(Alignment.Center)
-                                .size(24.dp),
-                    )
-                }
-
-                Spacer(modifier = Modifier.size(12.dp))
-
-                Box(
                     contentAlignment = Alignment.Center,
                     modifier =
                         Modifier
