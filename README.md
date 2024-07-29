@@ -1,4 +1,4 @@
-# Moshi
+# MoshiTune
 
 <img src="https://raw.githubusercontent.com/LucasGGamerM/MoshiTune/dev/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" height="72">
 
