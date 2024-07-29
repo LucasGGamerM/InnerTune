@@ -15,7 +15,7 @@ android {
     namespace = "com.malopieds.innertune"
     compileSdk = 34
     defaultConfig {
-        applicationId = "com.moshinda.moshitune"
+        applicationId = "com.moshinda.vitrola"
         minSdk = 24
         targetSdk = 34
         versionCode = 25
