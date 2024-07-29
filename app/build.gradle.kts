@@ -12,7 +12,7 @@ plugins {
 }
 
 android {
-    namespace = "com.moshinda.moshitune"
+    namespace = "com.malopieds.innertune"
     compileSdk = 34
     defaultConfig {
         applicationId = "com.moshinda.moshitune"
