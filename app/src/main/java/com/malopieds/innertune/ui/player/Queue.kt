@@ -268,7 +268,7 @@ fun Queue(
                 WindowInsets.systemBars
                     .add(
                         WindowInsets(
-                            top = ListItemHeight,
+                            top = ListItemHeight + 16.dp,
                             bottom = ListItemHeight,
                         ),
                     ).asPaddingValues(),
