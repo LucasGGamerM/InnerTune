@@ -1,19 +1,18 @@
-# MoshiTune
+# Vitrola
 
-<img src="https://raw.githubusercontent.com/LucasGGamerM/MoshiTune/dev/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" height="72">
+<img src="https://raw.githubusercontent.com/LucasGGamerM/Vitrola/dev/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" height="72">
 
 A fork of InnerTune, A Material 3 YouTube Music client for Android
 
-[![Latest release](https://img.shields.io/github/v/release/LucasGGamerM/MoshiTune?include_prereleases)](https://github.com/LucasGGamerM/MoshiTune/releases)
-[![License](https://img.shields.io/github/license/LucasGGamerM/MoshiTune)](https://www.gnu.org/licenses/gpl-3.0)
-[![Downloads](https://img.shields.io/github/downloads/LucasGGamerM/MoshiTune/total)](https://github.com/LucasGGamerM/MoshiTune/releases)
-[![Downloads](https://img.shields.io/endpoint?url=https://apt.izzysoft.de/fdroid/api/v1/shield/com.malopieds.innertune)](https://apt.izzysoft.de/fdroid/index/apk/com.malopieds.innertune)
+[![Latest release](https://img.shields.io/github/v/release/LucasGGamerM/Vitrola?include_prereleases)](https://github.com/LucasGGamerM/Vitrola/releases)
+[![License](https://img.shields.io/github/license/LucasGGamerM/Vitrola)](https://www.gnu.org/licenses/gpl-3.0)
+[![Downloads](https://img.shields.io/github/downloads/LucasGGamerM/Vitrola/total)](https://github.com/LucasGGamerM/Vitrola/releases)
 
-[<img src="https://github.com/machiav3lli/oandbackupx/blob/034b226cea5c1b30eb4f6a6f313e4dadcbb0ece4/badge_github.png" alt="Get it on GitHub" height="80">](https://github.com/LucasGGamerM/MoshiTune/releases/latest)
+[<img src="https://github.com/machiav3lli/oandbackupx/blob/034b226cea5c1b30eb4f6a6f313e4dadcbb0ece4/badge_github.png" alt="Get it on GitHub" height="80">](https://github.com/LucasGGamerM/Vitrola/releases/latest)
 [<img src="https://gitlab.com/IzzyOnDroid/repo/-/raw/master/assets/IzzyOnDroid.png" height="80">](https://apt.izzysoft.de/fdroid/index/apk/com.malopieds.innertune)
 
 <!---[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" alt="Get it on F-Droid" height="80">](https://f-droid.org/packages/com.zionhuang.music)
-[Compare versions](https://github.com/LucasGGamerM/MoshiTune/wiki/App-Versions) --->
+[Compare versions](https://github.com/LucasGGamerM/Vitrola/wiki/App-Versions) --->
 
 ## Features
 
@@ -37,14 +36,14 @@ A fork of InnerTune, A Material 3 YouTube Music client for Android
 ## Screenshots
 
 <p float="left">
-  <img src="https://raw.githubusercontent.com/LucasGGamerM/MoshiTune/dev/fastlane/metadata/android/en-US/images/phoneScreenshots/01.png" width="200" />
-  <img src="https://raw.githubusercontent.com/LucasGGamerM/MoshiTune/dev/fastlane/metadata/android/en-US/images/phoneScreenshots/02.png" width="200" />
-  <img src="https://raw.githubusercontent.com/LucasGGamerM/MoshiTune/dev/fastlane/metadata/android/en-US/images/phoneScreenshots/03.png" width="200" />
+  <img src="https://raw.githubusercontent.com/LucasGGamerM/Vitrola/dev/fastlane/metadata/android/en-US/images/phoneScreenshots/01.png" width="200" />
+  <img src="https://raw.githubusercontent.com/LucasGGamerM/Vitrola/dev/fastlane/metadata/android/en-US/images/phoneScreenshots/02.png" width="200" />
+  <img src="https://raw.githubusercontent.com/LucasGGamerM/Vitrola/dev/fastlane/metadata/android/en-US/images/phoneScreenshots/03.png" width="200" />
 </p>
 <p float="left">
-  <img src="https://raw.githubusercontent.com/LucasGGamerM/MoshiTune/dev/fastlane/metadata/android/en-US/images/phoneScreenshots/04.png" width="200" />
-  <img src="https://raw.githubusercontent.com/LucasGGamerM/MoshiTune/dev/fastlane/metadata/android/en-US/images/phoneScreenshots/05.png" width="200" />
-  <img src="https://raw.githubusercontent.com/LucasGGamerM/MoshiTune/dev/fastlane/metadata/android/en-US/images/phoneScreenshots/06.png" width="200" />
+  <img src="https://raw.githubusercontent.com/LucasGGamerM/Vitrola/dev/fastlane/metadata/android/en-US/images/phoneScreenshots/04.png" width="200" />
+  <img src="https://raw.githubusercontent.com/LucasGGamerM/Vitrola/dev/fastlane/metadata/android/en-US/images/phoneScreenshots/05.png" width="200" />
+  <img src="https://raw.githubusercontent.com/LucasGGamerM/Vitrola/dev/fastlane/metadata/android/en-US/images/phoneScreenshots/06.png" width="200" />
 </p>
 
 > **Warning**
@@ -77,11 +76,11 @@ before you create a pull request.
 If you like InnerTune, you're welcome to send a donation. Donations will support the development,
 including bug fixes and new features.
 
-<a href="https://liberapay.com/zionhuang"><img src="https://raw.githubusercontent.com/LucasGGamerM/MoshiTune/dev/assets/liberapay.png" alt="Liberapay" height="60" ></a>
-<a href="https://www.buymeacoffee.com/zionhuang"><img src="https://raw.githubusercontent.com/LucasGGamerM/MoshiTune/dev/assets/buymeacoffee.png" alt="Liberapay" height="60" ></a> --->
+<a href="https://liberapay.com/zionhuang"><img src="https://raw.githubusercontent.com/LucasGGamerM/Vitrola/dev/assets/liberapay.png" alt="Liberapay" height="60" ></a>
+<a href="https://www.buymeacoffee.com/zionhuang"><img src="https://raw.githubusercontent.com/LucasGGamerM/Vitrola/dev/assets/buymeacoffee.png" alt="Liberapay" height="60" ></a> --->
 
 ## Credit
 
 I want to give credit to [vfsfitvnm/ViMusic](https://github.com/vfsfitvnm/ViMusic) for being an
 example of Jetpack Compose music player. It helped me a lot on my way to learn Compose and
-Android development. And obviously the forked repo [z-huang/InnerTune](https://github.com/z-huang/InnerTune).
+Android development. And obviously the forked repo [malopieds/InnerTune](https://github.com/z-huang/InnerTune).
