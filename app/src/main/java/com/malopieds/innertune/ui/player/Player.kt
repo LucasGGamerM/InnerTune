@@ -858,8 +858,7 @@ fun BottomSheetPlayer(
                         },
                         modifier =
                             Modifier
-                                .size(42.dp)
-                                .padding(4.dp)
+                                .size(32.dp)
                                 .align(Alignment.Center)
                                 .alpha(if (repeatMode == Player.REPEAT_MODE_OFF) 0.5f else 1f),
                         onClick = playerConnection.player::toggleRepeatMode,
